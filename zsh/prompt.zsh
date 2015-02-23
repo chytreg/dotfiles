@@ -23,7 +23,7 @@ if [[ "$PROMPTSIZE + $PWDSIZE" -gt $TERMWIDTH ]]; then
 fi
 
 parse_git_branch() {
-  (test -d .git) && (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
 
 parse_git_state() {
