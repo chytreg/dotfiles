@@ -28,3 +28,7 @@ set tabstop=2
 set softtabstop=2
 
 colorscheme Tomorrow-Night
+if has("autocmd")
+  " remove trailing white spaces
+  autocmd BufWritePre * :%s/\s\+$//e
+endif
