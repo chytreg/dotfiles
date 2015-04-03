@@ -7,6 +7,10 @@ function git-remove-merged {
   (git branch --merged | grep -v "\*" | xargs -n 1 git branch -d) || echo 'Nothing to do'
 }
 
+function send-new-rpm-email {
+  :${1?"Usage: GMAIL_PASS=XXX send-new-rpm-email VERSION"}
+  curl -fsSL http://bit.ly/19PVqhn | ruby /dev/stdin ${1}
+}
 
 function fm {
   if [ -f Procfile.dev ];
