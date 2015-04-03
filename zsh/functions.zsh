@@ -7,15 +7,6 @@ function git-remove-merged {
   (git branch --merged | grep -v "\*" | xargs -n 1 git branch -d) || echo 'Nothing to do'
 }
 
-function new-scratch {
-  date=$(date +'%Y-%m-%d-%H%M%S')
-  cur_dir="$HOME/scratch"
-  new_dir="$HOME/tmp/scratch-$date"
-  mkdir -p "$new_dir"
-  ln -nfs "$new_dir" "$cur_dir"
-  cd $cur_dir
-  echo "New scratch dir ready for grinding ;>"
-}
 
 function fm {
   if [ -f Procfile.dev ];
@@ -23,36 +14,6 @@ function fm {
     foreman start -f Procfile.dev
   else
     foreman start
-  fi
-}
-
-# project chytreg/dotfiles my/dotfiles
-# project my/dotfiles
-
-function project {
-: ${1?"Usage: project project_dir"}
-  mkdir -p ~/src
-  project_dir="${@: -1}"
-  project_name=$1
-  project_path=~/src/$project_dir
-  echo $project_path
-  if [ ! -d $project_path ]; then
-    echo "~ Git clone..."
-    git clone "git@github.com:$project_name.git" $project_path
-  fi
-
-  if [ -d $project_path ]; then
-    cd $project_path
-    if [ -d .git ]; then
-      echo "~ Git pull.."
-      git pull
-    fi
-    if [ -f Gemfile ]; then
-      echo "~ Bundle install..."
-      bundle install
-    fi
-  else
-    echo "~ Can't find project: $project_name"
   fi
 }
 
