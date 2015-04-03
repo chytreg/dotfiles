@@ -14,8 +14,8 @@ if [[ "$OSTYPE" == darwin* ]]; then export BROWSER='open'; fi
 if [[ -z "$LANG" ]]; then export LANG='en_US.UTF-8'; fi
 
 # == editors ==
-export EDITOR='subl -w'
-export VISUAL='subl -w'
+export EDITOR='subl'
+export VISUAL='subl'
 export PAGER='less'
 
 # == java home ==
