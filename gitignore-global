@@ -29,7 +29,9 @@ rerun.txt
 spec/tmp/*
 tmp/*
 vendor/bundle
+schema/vendor/bundle
 vendor/relics_cleanup.db.zip
 zeus.json
 .sky
 .ruby-version
+!.gitkeep
