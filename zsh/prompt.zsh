@@ -45,9 +45,9 @@ git_prompt_string() {
 
 # Finally, let's set the prompt
 if [ `id -u` -eq "0" ]; then
-  PROMPT='[${PR_RED}%n${PR_WHITE}:${PR_YELLOW}%$PR_PWDLEN<...<%~% ${PR_RED}${GITBRANCH}${PR_RESET}] # '
+  PROMPT='[${PR_RED}%n${PR_WHITE}:${PR_YELLOW}%$PR_PWDLEN<...<%3(.:...:)%2.% ${PR_RED}${GITBRANCH}${PR_RESET}] # '
 else
   # local DIR=$(pwd)
   # if [ $DIR = ]
-  PROMPT='${PR_BLUE}⌘ ${PR_BRIGHT_YELLOW}%$PR_PWDLEN<...<%~% ${PR_RESET}$(git_prompt_string) > '
+  PROMPT='${PR_BLUE}⌘ ${PR_BRIGHT_YELLOW}%$PR_PWDLEN<...<%3(.:...:)%2.% ${PR_RESET}$(git_prompt_string) > '
 fi
