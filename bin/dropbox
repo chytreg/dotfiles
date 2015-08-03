@@ -3,7 +3,7 @@
 echo "+ symlink Documents from Dropbox"
 if [[ ! -h ~/Documents ]]; then
   backup_dir="Documents-$(date +'%Y-%m-%d-%H%M%S').bak"
-  mv ~/Documents ~/$backup_dir
+  sudo mv ~/Documents ~/$backup_dir
   ln -sf ~/Dropbox/private/Documents ~/Documents
 fi
 
