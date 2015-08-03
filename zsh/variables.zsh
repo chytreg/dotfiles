@@ -29,6 +29,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-# Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
