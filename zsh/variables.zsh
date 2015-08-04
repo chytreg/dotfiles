@@ -1,5 +1,6 @@
 # == PATH ==
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin"
+export PATH="/home/${USER}/bin:${PATH}"
 
 # == rbenv ==
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
