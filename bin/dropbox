@@ -37,7 +37,3 @@ if [[ ! -h ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User ]]; the
   ln -sf ~/Dropbox/private/Sublime/User ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 fi
 
-if [[ ! -h /usr/bin/subl ]]; then
-  echo "+ subl symlink"
-  sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/
-fi
