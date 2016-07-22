@@ -62,3 +62,14 @@ function remove-backups() {
 function fix-hipchat() {
   curl -fsSL http://bitly.com/10wDsM7 | bash
 }
+
+### docker ###
+# remove stopped containers
+function drm() { docker rm -f $(docker ps -q -f status=exited) }
+# remove dangling (unused) images
+function dri() { docker rmi -f $(docker images -q -f dangling=true) }
+# enter into a running container
+function dent { docker exec -i -t $1 /bin/bash }
+# run bash for any image
+function dbash { docker run --rm -it -e TERM=xterm --entrypoint /bin/bash $1 }
+
