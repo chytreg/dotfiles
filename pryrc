@@ -1,3 +1,5 @@
+Pry.config.editor = 'vim'
+
 def rr!
   Rake.application.instance_variable_get(:@tasks).clear
   load "Rakefile"
