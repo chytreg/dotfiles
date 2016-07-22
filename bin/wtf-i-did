@@ -67,4 +67,4 @@ case $AUTHOR_OUTPUT in
     ;;
 esac
 
-git log --no-merges --pretty=format:"$AUTHOR_OUTPUT - %ad -> %s" --date-order --date=short --since=$SINCE --until=$UNTIL --author="$AUTHOR"
+git log --pretty=format:"$AUTHOR_OUTPUT - %ad -> %s" --date-order --date=short --since=$SINCE --until=$UNTIL --author="$AUTHOR"
