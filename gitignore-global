@@ -34,4 +34,5 @@ vendor/relics_cleanup.db.zip
 zeus.json
 .sky
 .ruby-version
+.rbenv-vars
 !.gitkeep
