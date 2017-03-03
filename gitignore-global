@@ -3,6 +3,7 @@
 *.rbc
 *.sassc
 *.swp
+*.pyc
 .DS_Store
 .idea/*
 .rspec
@@ -28,11 +29,15 @@ public/uploads
 rerun.txt
 spec/tmp/*
 tmp/*
+tmp/pids/*
+!tmp/pids/.gitkeep
 vendor/bundle
 schema/vendor/bundle
 vendor/relics_cleanup.db.zip
 zeus.json
 .sky
+.happypack
 .ruby-version
 .rbenv-vars
 !.gitkeep
+!.keep
