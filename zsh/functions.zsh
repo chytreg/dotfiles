@@ -69,7 +69,12 @@ function drm() { docker rm -f $(docker ps -q -f status=exited) }
 # remove dangling (unused) images
 function dri() { docker rmi -f $(docker images -q -f dangling=true) }
 # enter into a running container
-function dent { docker exec -i -t $1 /bin/bash }
+function dent() { docker exec -i -t $1 /bin/bash }
 # run bash for any image
-function dbash { docker run --rm -it -e TERM=xterm --entrypoint /bin/bash $1 }
-
+function dbash() { docker run --rm -it -e TERM=xterm --entrypoint /bin/bash $1 }
+# kill all working images
+function dkill() { docker kill $(docker ps -q) }
+# garbage collection
+function dgc() {
+  docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc
+}
