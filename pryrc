@@ -14,3 +14,12 @@ module Sidekiq
     end
   end
 end
+
+begin
+  # gem install pbcopy
+  require "pbcopy"
+  rescue LoadError
+    $LOAD_PATH << "~/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/pbcopy-1.0.1/lib/"
+    $LOAD_PATH << "~/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/pasteboard-1.0/lib/"
+    require "pbcopy"
+end
