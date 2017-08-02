@@ -1,3 +1,4 @@
+*.aes
 **.orig
 *.bundle
 *.rbc
