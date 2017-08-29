@@ -1,6 +1,7 @@
 # == PATH ==
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin"
-export PATH="/Users/${USER}/bin:${PATH}"
+export PATH="/Users/${USER}/.yarn/bin:/Users/${USER}/bin:/Users/${USER}/go/bin:${PATH}"
+export PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:${PATH}"
 
 # == rbenv ==
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
