@@ -1,0 +1,24 @@
+---
+- name: Set ComputerName
+  command: "scutil --set ComputerName {{ computer_name }}"
+  become: true
+  when: (computer_name is defined) and (ansible_hostname != computer_name)
+
+- name: Set HostName
+  command: "scutil --set HostName {{ computer_name }}"
+  become: true
+  when: (computer_name is defined) and (ansible_hostname != computer_name)
+
+- name: Set LocalHostName
+  command: "scutil --set LocalHostName {{ computer_name }}"
+  become: true
+  when: (computer_name is defined) and (ansible_hostname != computer_name)
+
+- name: "Set the NetBIOS name"
+  become: yes
+  osx_defaults:
+    domain: com.apple.smb.server
+    key: NetBIOSName
+    type: string
+    value: "{{ computer_name }}"
+  when: (computer_name is defined)

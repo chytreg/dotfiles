@@ -21,7 +21,7 @@ brew_packages:
 
 cask_packages:
   - caffeine
-  - clip
+  - clipy
   - docker
   - dropbox
   - firefox
