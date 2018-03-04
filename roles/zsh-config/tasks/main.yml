@@ -1,0 +1,47 @@
+- name: Installing oh-my-zsh
+  git:
+    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
+    dest: "/Users/{{ ansible_user }}/.oh-my-zsh"
+    update: no
+  register: ohmyzsh_result
+  changed_when: "ohmyzsh_result.after|default('after') != ohmyzsh_result.before|default('before')"
+
+- name: Setting default shell
+  become: true
+  shell: "chsh -s $(which zsh) {{ ansible_user }}"
+  register: chsh_result
+  changed_when: "'chsh: no changes made' not in chsh_result.stderr" 
+
+- name: Install Powerline9k theme
+  git:
+    repo: "https://github.com/bhilburn/powerlevel9k.git"
+    dest: "/Users/{{ ansible_user }}/.oh-my-zsh/custom/themes/powerlevel9k"
+    update: no
+  register: powerline9k_result
+  changed_when: "powerline9k_result.after|default('after') != powerline9k_result.before|default('before')"
+
+- name: Place .zshrc
+  template:
+    src: "zshrc.j2"
+    dest: "/Users/{{ ansible_user }}/.zshrc"
+    backup: yes
+
+# Terminal
+
+- name: Get current Terminal profile.
+  shell: defaults read com.apple.Terminal 'Default Window Settings'
+  register: current_theme
+  changed_when: false
+ 
+- name: Ensure custom Terminal profile is added.
+  shell: open files/Solarized-Dark.terminal
+  changed_when: false
+  when: "'Solarized-Dark' not in current_theme.stdout"
+ 
+- name: Ensure custom Terminal profile is set as default.
+  shell: "{{ item }}"
+  with_items:
+    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized-Dark'
+    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized-Dark'
+  changed_when: false
+  when: "'Solarized Dark ansi' not in current_theme.stdout"
