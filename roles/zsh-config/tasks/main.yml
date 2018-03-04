@@ -27,21 +27,20 @@
     backup: yes
 
 # Terminal
-
-- name: Get current Terminal profile.
+- name: Get default Terminal profile.
   shell: defaults read com.apple.Terminal 'Default Window Settings'
-  register: current_theme
   changed_when: false
- 
+  register: default_theme
+
 - name: Ensure custom Terminal profile is added.
-  shell: open files/Solarized-Dark.terminal
+  shell: open roles/zsh-config/files/{{ terminal_theme }}.terminal
   changed_when: false
-  when: "'Solarized-Dark' not in current_theme.stdout"
+  when: terminal_theme not in default_theme.stdout
  
 - name: Ensure custom Terminal profile is set as default.
   shell: "{{ item }}"
   with_items:
-    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized-Dark'
-    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized-Dark'
+    - "defaults write com.apple.Terminal 'Default Window Settings' -string '{{ terminal_theme }}'"
+    - "defaults write com.apple.Terminal 'Startup Window Settings' -string '{{ terminal_theme }}'"
   changed_when: false
-  when: "'Solarized Dark ansi' not in current_theme.stdout"
+  when: terminal_theme not in default_theme.stdout

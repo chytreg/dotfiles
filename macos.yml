@@ -9,7 +9,7 @@
     - role: macos-config
     - role: homebrew-packages
     - role: git-config
-    # - role: zsh-config
+    - role: zsh-config
     - role: programming-langs
     # - role: vscode-config
     - role: store-apps
