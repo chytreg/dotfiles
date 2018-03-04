@@ -29,18 +29,31 @@
 # Terminal
 - name: Get default Terminal profile.
   shell: defaults read com.apple.Terminal 'Default Window Settings'
-  changed_when: false
   register: default_theme
+  changed_when: false
 
 - name: Ensure custom Terminal profile is added.
-  shell: open roles/zsh-config/files/{{ terminal_theme }}.terminal
+  shell: "open '{{ role_path }}/files/{{ terminal_theme }}.terminal'"
   changed_when: false
-  when: terminal_theme not in default_theme.stdout
+  when: "terminal_theme != default_theme.stdout"
  
 - name: Ensure custom Terminal profile is set as default.
   shell: "{{ item }}"
   with_items:
     - "defaults write com.apple.Terminal 'Default Window Settings' -string '{{ terminal_theme }}'"
     - "defaults write com.apple.Terminal 'Startup Window Settings' -string '{{ terminal_theme }}'"
+  changed_when: "terminal_theme != default_theme.stdout"
+
+# iTerm
+- name: Get iTerm prefs path.
+  shell: defaults read com.googlecode.iterm2 'PrefsCustomFolder'
   changed_when: false
-  when: terminal_theme not in default_theme.stdout
+  register: default_iterm_prefs_path
+
+- name: Set iTerm prefs path.
+  shell: "{{ item }}"
+  with_items:
+    - "defaults write com.googlecode.iterm2 'PrefsCustomFolder' -string '{{ iterm_prefs_path }}'"
+    - "defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true"
+  changed_when: "iterm_prefs_path != default_iterm_prefs_path.stdout"
+ 

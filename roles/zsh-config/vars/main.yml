@@ -1,2 +1,3 @@
 ---
-terminal_theme: "Monokai_Pro_Filter_Spectrum"
+terminal_theme: "Tango Dark"
+iterm_prefs_path: "{{ role_path }}/files"
