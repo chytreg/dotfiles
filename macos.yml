@@ -11,7 +11,6 @@
     - role: git-config
     # - role: zsh-config
     - role: programming-langs
-    #- role: global-packages
     #- role: vscode-config
     #- role: services
     #- role: store-apps
