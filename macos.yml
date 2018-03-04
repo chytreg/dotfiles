@@ -1,0 +1,17 @@
+---
+- name: Setup macOS Workstation
+  hosts: local
+
+  vars:
+    computer_name: hackintosh 
+
+  roles:
+    - role: macos-config
+    - role: homebrew-packages
+    - role: git-config
+    # - role: zsh-config
+    #- role: programming-langs
+    #- role: global-packages
+    #- role: vscode-config
+    #- role: services
+    #- role: store-apps

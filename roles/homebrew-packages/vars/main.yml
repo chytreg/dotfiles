@@ -1,0 +1,36 @@
+---
+brew_taps:
+  - caskroom/cask
+  - caskroom/fonts
+  - heroku/brew
+  - homebrew/core
+  - homebrew/services
+
+brew_packages:
+  - heroku
+  - imagemagick
+  - mas
+  - nodenv
+  - rbenv 
+  - rbenv-default-gems 
+  - ruby-build 
+  - zsh
+
+cask_packages:
+  - caffeine
+  - clip
+  - docker
+  - dropbox
+  - firefox
+  - flux
+  - font-meslo-for-powerline
+  - google-chrome
+  - harvest
+  - iterm2
+  - rowanj-gitx
+  - slack
+  - spectacle
+  - virtualbox
+  - visual-studio-code
+  
+  
