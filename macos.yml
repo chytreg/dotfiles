@@ -10,7 +10,7 @@
     - role: homebrew-packages
     - role: git-config
     # - role: zsh-config
-    #- role: programming-langs
+    - role: programming-langs
     #- role: global-packages
     #- role: vscode-config
     #- role: services
