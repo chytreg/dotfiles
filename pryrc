@@ -19,7 +19,8 @@ begin
   # gem install pbcopy
   require "pbcopy"
   rescue LoadError
-    $LOAD_PATH << "~/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/pbcopy-1.0.1/lib/"
-    $LOAD_PATH << "~/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/pasteboard-1.0/lib/"
+    GEM_DIR=`gem env gemdir`.strip + "/gems"
+    $LOAD_PATH << "#{GEM_DIR}/pbcopy-1.0.1/lib/"
+    $LOAD_PATH << "#{GEM_DIR}/pasteboard-1.0/lib/"
     require "pbcopy"
 end

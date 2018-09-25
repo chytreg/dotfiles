@@ -1,3 +1,5 @@
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 command_oriented_history=1
 HISTCONTROL=ignoreboth
 

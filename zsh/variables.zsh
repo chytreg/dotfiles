@@ -16,8 +16,8 @@ if [[ "$OSTYPE" == darwin* ]]; then export BROWSER='open'; fi
 if [[ -z "$LANG" ]]; then export LANG='en_US.UTF-8'; fi
 
 # == editors ==
-export EDITOR='subl'
-export VISUAL='subl'
+export EDITOR='vim'
+export VISUAL='code'
 export PAGER='less'
 
 # == java home ==
@@ -31,3 +31,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+# gemfile ruby version
+export GEMFILE_RUBY=2.4.2
+# ansible-vault
+# export ANSIBLE_VAULT_PASSWORD_FILE=/usr/local/bin/av-open.sh

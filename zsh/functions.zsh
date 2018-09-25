@@ -76,5 +76,24 @@ function dbash() { docker run --rm -it -e TERM=xterm --entrypoint /bin/bash $1 }
 function dkill() { docker kill $(docker ps -q) }
 # garbage collection
 function dgc() {
-  docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /etc:/etc:ro spotify/docker-gc
+  docker run --rm -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
+}
+function cPacketDockerLogin {
+  $(aws ecr get-login --no-include-email --region us-west-2)
+}
+function cPacketRegistry {
+  echo "922501241586.dkr.ecr.us-west-2.amazonaws.com"
+}
+function cPacketRegistryCatalog {
+  cPacketApiToken
+  curl -sH "Authorization: Basic $cPacketApiToken" https://$(cPacketRegistry)/v2/_catalog | jq
+}
+function cPacketRepoTags {
+  repo=${1:-"sf/web-ui"}
+  cPacketApiToken
+  curl -sH "Authorization: Basic $cPacketApiToken" https://$(cPacketRegistry)/v2/${repo}/tags/list | jq
+}
+function cPacketApiToken {
+  [ -n "${cPacketApiToken}" ] && return 0
+  export cPacketApiToken=$(aws ecr get-authorization-token --output text --query "authorizationData[].authorizationToken")
 }
